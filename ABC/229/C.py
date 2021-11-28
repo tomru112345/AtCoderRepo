@@ -12,11 +12,11 @@ L = sorted(L, key=lambda x: x[0], reverse=True)
 score = 0
 
 for i in range(N):
-    if L[i][1] <= W:
-        W -= L[i][1]
-        score += L[i][0] * L[i][1]
-    else:
-        score += L[i][0] * W
+    min_g = min(W, L[i][1])
+    W -= min_g
+    score += L[i][0] * min_g
+    if (W <= 0):
         print(score)
         exit()
+
 print(score)
